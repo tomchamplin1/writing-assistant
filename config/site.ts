@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Next.js",
+  name: "PromptAssist",
   description:
     "Beautifully designed components built with Radix UI and Tailwind CSS.",
   mainNav: [
@@ -9,6 +9,14 @@ export const siteConfig = {
       title: "Home",
       href: "/",
     },
+    {
+      title: "Login",
+      href: "/login",
+    },
+    // {
+    //   title: "Logout",
+    //   href: "/logout",
+    // },
   ],
   links: {
     twitter: "https://twitter.com/shadcn",
