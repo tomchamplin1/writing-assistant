@@ -35,7 +35,14 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "app/login/submit-button.jsx",
+    "components/AuthButtonClient.jsx",
+    "components/Timer.jsx",
+    "app/page.jsx",
+    "app/page.jsx",
+    "components/Generate.jsx",
+    "components/Generate.jx"
   ],
   "exclude": [
     "node_modules"

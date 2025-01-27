@@ -22,8 +22,6 @@ export async function MainNav({ items }: MainNavProps) {
     error,
   } = await supabase.auth.getSession()
 
-  console.log(session)
-
   if (error) {
     console.error(error)
   }

@@ -1,36 +1,40 @@
+import { createClient } from "@/utils/supabase/server"
+
 import { Button } from "@/components/ui/button"
 
 export default function DBSubmitButton({ storyContent, prompt }) {
-  const handleSave = async () => {
-    if (!storyContent || !prompt) {
-      console.error("Story content and prompt are required to save the story")
-      return
+  const saveStory = async () => {
+    const supabase = createClient()
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
+
+    if (!user) {
+      console.log("No user found, redirecting to login")
+      // return redirect("/login")
     }
 
-    try {
-      const response = await fetch("/api/saveStory/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ storyContent, prompt }),
+    if (user) {
+      let dbUser = await prisma.users.findUnique({
+        where: {
+          id: user.id,
+        },
       })
 
-      // Check if the response is not OK
-      if (!response.ok) {
-        const text = await response.text() // Capture the raw response as text
-        console.error("API returned an error:", text)
-        throw new Error(`Error ${response.status}: ${response.statusText}`)
+      if (dbUser) {
+        await prisma.story.create({
+          data: {
+            content: storyContent,
+            prompt: prompt,
+            userId: user.id,
+          },
+        })
+        console.log("Story created successfully")
+      } else {
+        console.log("No user found in the database")
       }
-
-      const result = await response.json()
-      console.log("Story saved successfully:", result)
-    } catch (error) {
-      console.error("Error saving story:", error)
     }
   }
 
-  return (
-    <Button onClick={handleSave} disabled={!storyContent || !prompt}>
-      Save
-    </Button>
-  )
+  return <Button onClick={saveStory}>Submit</Button>
 }
