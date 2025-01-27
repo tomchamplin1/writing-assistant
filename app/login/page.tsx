@@ -8,11 +8,16 @@ import AuthButtonClient from "@/components/AuthButtonClient"
 
 import { SubmitButton } from "./submit-button"
 
-interface LoginPageProps {
-  searchParams: { message?: string }
+interface PageProps {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export default function Login({ searchParams }: LoginPageProps) {
+export default async function Login({
+  searchParams,
+}: {
+  searchParams: { message?: string }
+}) {
   const signIn = async (formData: FormData) => {
     "use server"
 
