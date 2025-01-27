@@ -8,21 +8,12 @@ import AuthButtonClient from "@/components/AuthButtonClient"
 
 import { SubmitButton } from "./submit-button"
 
-interface PageProps {
-  params: { slug: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export default async function Login({
-  searchParams,
-}: {
-  searchParams: { message?: string }
-}) {
-  const signIn = async (formData: FormData) => {
+export default async function Login({ searchParams }) {
+  const signIn = async (formData) => {
     "use server"
 
-    const email = formData.get("email") as string
-    const password = formData.get("password") as string
+    const email = formData.get("email")
+    const password = formData.get("password")
     const supabase = createClient()
 
     const { error } = await (
@@ -39,12 +30,12 @@ export default async function Login({
     return redirect("/account")
   }
 
-  const signUp = async (formData: FormData) => {
+  const signUp = async (formData) => {
     "use server"
 
     const origin = (await headers()).get("origin")
-    const email = formData.get("email") as string
-    const password = formData.get("password") as string
+    const email = formData.get("email")
+    const password = formData.get("password")
     const supabase = createClient()
 
     const { error } = await (
