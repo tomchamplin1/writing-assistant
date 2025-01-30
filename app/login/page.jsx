@@ -117,8 +117,8 @@ export default async function Login({ searchParams }) {
             </p>
           )}
         </form>
-        <hr className="pb-2"></hr>
-        <AuthButtonClient />
+        {/* <hr className="pb-2"></hr>
+        <AuthButtonClient /> */}
       </div>
     </div>
   )
