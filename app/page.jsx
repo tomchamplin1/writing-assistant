@@ -59,7 +59,7 @@ export default function IndexPage() {
         <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
           Generate a writing prompt in seconds
         </h1>
-        <h2 className="mb-2 text-lg font-semibold">
+        {/* <h2 className="mb-2 text-lg font-semibold">
           Are there any topics you&apos;d like to write about?
         </h2>
         <input
@@ -69,7 +69,7 @@ export default function IndexPage() {
           placeholder="Enter topics (optional)"
           className="w-48 rounded-md border p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           aria-label="Writing topics"
-        />
+        /> */}
         <GenerateButton onDataGenerated={handleDataGenerated} />
         <Timer />
         <div className="flex min-h-screen w-full flex-col">
