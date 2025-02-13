@@ -9,22 +9,16 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { Button } from "./ui/button"
 
 export default function AuthButtonClient() {
-  const supabase = createClientComponentClient()
+  const supabase = createClient()
   const router = useRouter()
 
   const handleSignIn = async () => {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "http://localhost:3001/auth/confirm",
+        redirectTo: "http://localhost:3000/auth/confirm",
       },
     })
-  }
-
-  const handleSignOut = async () => {
-    await supabase.auth.signOut()
-    router.refresh()
-    window.location.href = "/"
   }
 
   return (

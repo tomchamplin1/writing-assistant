@@ -9,6 +9,8 @@ import AuthButtonClient from "@/components/AuthButtonClient"
 import { SubmitButton } from "./submit-button"
 
 export default async function Login({ searchParams }) {
+  const params = await searchParams
+
   const signIn = async (formData) => {
     "use server"
 
@@ -53,6 +55,20 @@ export default async function Login({ searchParams }) {
     }
 
     return redirect("/login?message=Check email to continue sign in process")
+  }
+
+  const signInWithGoogle = async () => {
+    const supabase = await createClient()
+
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+    })
+
+    if (error) {
+      return redirect("/login?message=Could not authenticate user")
+    }
+
+    // return redirect("/account")
   }
 
   return (
@@ -111,14 +127,13 @@ export default async function Login({ searchParams }) {
           >
             Sign Up
           </SubmitButton>
-          {searchParams?.message && (
+          {params?.message && (
             <p className="mt-4 bg-foreground/10 p-4 text-center text-foreground">
-              {searchParams.message}
+              {params.message}
             </p>
           )}
         </form>
-        {/* <hr className="pb-2"></hr>
-        <AuthButtonClient /> */}
+        <AuthButtonClient />
       </div>
     </div>
   )

@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { redirect } from "next/navigation"
 import { createClient } from "@/utils/supabase/server"
 
@@ -17,27 +18,42 @@ export default async function Account() {
     where: {
       userId: user.id,
     },
+    orderBy: {
+      updatedAt: "desc",
+    },
   })
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-12">My Stories</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="min-h-screen px-4 py-12 text-white sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        <h1 className="mb-12 text-center text-4xl font-bold">My Stories</h1>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {stories.map((story, index) => (
             <div
               key={index}
-              className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
+              className="overflow-hidden rounded-lg bg-gray-800 shadow-lg transition-all duration-300"
             >
               <div className="p-6">
-                <h3 className="text-md font-semibold mb-3 text-gray-100">
+                <span className="mb-5 text-sm text-gray-400">
+                  {new Date(story.updatedAt).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}{" "}
+                  at{" "}
+                  {new Date(story.updatedAt).toLocaleTimeString("en-US", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </span>
+                <h3 className="text-md mb-3 font-semibold text-gray-100">
                   {story.prompt}
                 </h3>
-                <p className="text-gray-300 line-clamp-4">{story.content}</p>
+                <p className="line-clamp-4 text-gray-300">{story.content}</p>
               </div>
-              <div className="bg-gray-700 px-6 py-4">
-                <button className="text-blue-400 hover:text-blue-300 transition-colors duration-200">
-                  Read more
+              <div className="flex items-center justify-between bg-gray-700 px-6 py-4">
+                <button className="text-gray-400 transition-colors duration-200 hover:text-white">
+                  <Link href={`/story/${story.id}`}>Read more</Link>
                 </button>
               </div>
             </div>

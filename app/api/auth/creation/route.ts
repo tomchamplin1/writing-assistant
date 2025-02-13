@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation"
 import { NextResponse } from "next/server"
 import { createClient } from "@/utils/supabase/server"
 
@@ -34,6 +33,6 @@ export async function GET() {
       console.log("user created!", dbUser)
     }
 
-    return NextResponse.redirect("http://localhost:3001/")
+    return NextResponse.redirect("http://localhost:3000/")
   }
 }

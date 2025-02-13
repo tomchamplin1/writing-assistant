@@ -43,7 +43,7 @@
     "app/page.jsx",
     "components/Generate.jsx",
     "components/Generate.jx"
-  ],
+, "app/login/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

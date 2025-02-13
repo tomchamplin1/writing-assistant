@@ -24,4 +24,3 @@ const msg = await anthropic.messages.create({
     },
   ],
 })
-console.log(msg)

@@ -17,38 +17,37 @@ export async function SiteHeader() {
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
         <Link href="/" className="flex items-center space-x-2">
-          <span className="inline-block font-bold">PromptAssist</span>
+          <span className="inline-block font-bold">PenpalAI</span>
         </Link>
         <div className="flex space-x-4 pl-5">
-          <Button variant={"ghost"}>
-            <Link
-              href="/"
-              className={cn(
-                "flex items-center text-sm font-medium text-muted-foreground"
-              )}
-            >
-              Home
-            </Link>
-          </Button>
+          <Link
+            href="/"
+            className={cn(
+              "flex items-center text-sm font-medium text-muted-foreground"
+            )}
+          >
+            <Button variant={"ghost"}>Home</Button>
+          </Link>
           {!user ? (
-            <Button
-              variant={"ghost"}
+            <Link
+              href="/login"
               className={cn(
                 "flex items-center text-sm font-medium text-muted-foreground"
               )}
             >
-              <Link href="/login">Login</Link>
-            </Button>
+              <Button variant={"ghost"}>Account</Button>
+            </Link>
           ) : (
-            <Button
-              variant={"ghost"}
-              className={cn(
-                "flex items-center text-sm font-medium text-muted-foreground"
-              )}
-              onClick={logout}
-            >
-              Logout
-            </Button>
+            <div className="flex space-x-4">
+              <Link
+                href="/account"
+                className={cn(
+                  "flex items-center text-sm font-medium text-muted-foreground"
+                )}
+              >
+                <Button variant={"ghost"}>Account</Button>
+              </Link>
+            </div>
           )}
         </div>
 
@@ -85,6 +84,28 @@ export async function SiteHeader() {
                 <span className="sr-only">Twitter</span>
               </div>
             </Link> */}
+            {!user ? (
+              <Button
+                variant={"ghost"}
+                className={cn(
+                  "flex items-center text-sm font-medium text-muted-foreground"
+                )}
+              >
+                <Link href="/login">Login</Link>
+              </Button>
+            ) : (
+              <div className="flex space-x-4">
+                <Button
+                  variant={"ghost"}
+                  className={cn(
+                    "flex items-center text-sm font-medium text-muted-foreground"
+                  )}
+                  onClick={logout}
+                >
+                  Logout
+                </Button>
+              </div>
+            )}
             <ThemeToggle />
           </nav>
         </div>
