@@ -4,13 +4,7 @@ import { createClient } from "@/utils/supabase/server"
 
 import prisma from "@/lib/db"
 
-interface PageProps {
-  params: {
-    storyID: string
-  }
-}
-
-export default async function Story({ params }: PageProps) {
+export default async function Story({ params }) {
   const storyID = params?.storyID
 
   const supabase = createClient()
