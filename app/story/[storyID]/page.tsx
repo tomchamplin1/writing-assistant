@@ -11,7 +11,7 @@ interface PageProps {
 }
 
 export default async function Story({ params }: PageProps) {
-  const { storyID } = params
+  const storyID = params?.storyID
 
   const supabase = createClient()
   const {
