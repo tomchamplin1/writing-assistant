@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation"
 import { NextResponse, type NextRequest } from "next/server"
 import { createClient } from "@/utils/supabase/server"
 import { type EmailOtpType } from "@supabase/supabase-js"
@@ -18,9 +17,9 @@ export async function GET(request: NextRequest) {
       type,
       token_hash,
     })
+
     if (!error) {
-      // redirect user to specified redirect URL or root of app
-      redirect("/api/auth/creation")
+      return NextResponse.redirect(new URL("/api/auth/creation", request.url))
     }
   }
 
@@ -29,17 +28,11 @@ export async function GET(request: NextRequest) {
     const { error } = await supabase.auth.exchangeCodeForSession(code)
 
     if (!error) {
-      const forwardedHost = request.headers.get("x-forwarded-host") // original origin before load balancer
-      const isLocalEnv = process.env.NODE_ENV === "development"
+      const forwardedHost = request.headers.get("x-forwarded-host")
 
-      const redirectUrl = isLocalEnv
-        ? `http://localhost:3000/api/auth/creation` // Local Dev
-        : `https://${forwardedHost || url.host}/api/auth/creation` // Production
-
-      return NextResponse.redirect(redirectUrl)
+      return NextResponse.redirect(new URL("/api/auth/creation", request.url))
     }
   }
 
-  // redirect the user to an error page with some instructions
-  redirect("/error")
+  return NextResponse.redirect(new URL("/error", request.url))
 }
