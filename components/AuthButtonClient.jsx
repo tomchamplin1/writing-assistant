@@ -1,10 +1,7 @@
 "use client"
 
-import { create } from "domain"
-import { useEffect, useState } from "react"
-import { redirect, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { createClient } from "@/utils/supabase/client"
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 
 import { Button } from "./ui/button"
 
@@ -13,10 +10,15 @@ export default function AuthButtonClient() {
   const router = useRouter()
 
   const handleSignIn = async () => {
+    const baseUrl =
+      typeof window !== "undefined"
+        ? window.location.origin
+        : "http://localhost:3000"
+
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "http://localhost:3000/auth/confirm",
+        redirectTo: `${baseUrl}/auth/confirm`,
       },
     })
   }
