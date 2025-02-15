@@ -22,10 +22,10 @@ export default function AuthButtonClient() {
   }
 
   const handleSignIn = async () => {
-    const { data, error } = await supabase.auth.signInWithOAuth({
+    await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "https://www.penpalai.xyz/auth/confirm",
+        redirectTo: getURL(),
       },
     })
   }
