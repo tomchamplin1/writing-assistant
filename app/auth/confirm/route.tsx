@@ -31,6 +31,8 @@ export async function GET(request: NextRequest) {
       const forwardedHost = request.headers.get("x-forwarded-host")
 
       return NextResponse.redirect(new URL("/api/auth/creation", request.url))
+    } else {
+      console.error("Error exchanging code for session:", error)
     }
   }
 

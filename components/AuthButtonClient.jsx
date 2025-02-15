@@ -21,13 +21,6 @@ export default function AuthButtonClient() {
   }
 
   const handleSignIn = async () => {
-    const isLocalhost =
-      typeof window !== "undefined" && window.location.hostname === "localhost"
-
-    const baseUrl = isLocalhost
-      ? "http://localhost:3000"
-      : window.location.origin
-
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
