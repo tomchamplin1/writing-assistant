@@ -17,6 +17,7 @@ export default function AuthButtonClient() {
     url = url.startsWith("http") ? url : `https://${url}`
     url = url.endsWith("/") ? url : `${url}/`
     url = `${url}auth/confirm`
+    console.log(url)
     return url
   }
 
