@@ -9,16 +9,29 @@ export default function AuthButtonClient() {
   const supabase = createClient()
   const router = useRouter()
 
+  const getURL = () => {
+    let url =
+      process?.env?.NEXT_PUBLIC_SITE_URL ??
+      process?.env?.NEXT_PUBLIC_VERCEL_URL ??
+      "http://localhost:3000/"
+    url = url.startsWith("http") ? url : `https://${url}`
+    url = url.endsWith("/") ? url : `${url}/`
+    url = `${url}auth/confirm`
+    return url
+  }
+
   const handleSignIn = async () => {
-    const baseUrl =
-      typeof window !== "undefined"
-        ? window.location.origin
-        : "http://localhost:3000"
+    const isLocalhost =
+      typeof window !== "undefined" && window.location.hostname === "localhost"
+
+    const baseUrl = isLocalhost
+      ? "http://localhost:3000"
+      : window.location.origin
 
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${baseUrl}/auth/confirm`,
+        redirectTo: getURL(),
       },
     })
   }

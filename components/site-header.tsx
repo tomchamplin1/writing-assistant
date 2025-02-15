@@ -39,14 +39,26 @@ export async function SiteHeader() {
             </Link>
           ) : (
             <div className="flex space-x-4">
-              <Link
-                href="/account"
-                className={cn(
-                  "flex items-center text-sm font-medium text-muted-foreground"
-                )}
-              >
-                <Button variant={"ghost"}>Account</Button>
-              </Link>
+              <div className="flex space-x-4">
+                <Link
+                  href="/write"
+                  className={cn(
+                    "flex items-center text-sm font-medium text-muted-foreground"
+                  )}
+                >
+                  <Button variant={"ghost"}>Write</Button>
+                </Link>
+              </div>
+              <div className="flex space-x-4">
+                <Link
+                  href="/account"
+                  className={cn(
+                    "flex items-center text-sm font-medium text-muted-foreground"
+                  )}
+                >
+                  <Button variant={"ghost"}>Account</Button>
+                </Link>
+              </div>
             </div>
           )}
         </div>

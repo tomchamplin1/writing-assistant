@@ -25,7 +25,6 @@ export default function GenerateButton({ onDataGenerated }) {
 
       const newData = await response.json()
       setData(newData) // Update the state with the new data
-      console.log("Generated response:", newData)
       onDataGenerated(newData) // Pass the data to the parent
     } catch (error) {
       console.error("Error generating response:", error)

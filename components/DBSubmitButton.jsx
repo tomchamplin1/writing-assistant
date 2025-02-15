@@ -29,7 +29,6 @@ export default function DBSubmitButton({ storyContent, prompt }) {
             userId: user.id,
           },
         })
-        console.log("Story created successfully")
       } else {
         console.log("No user found in the database")
       }

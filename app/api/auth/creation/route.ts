@@ -10,7 +10,6 @@ export async function GET(request: Request) {
   } = await (await supabase).auth.getUser()
 
   if (!user) {
-    console.log("No supabase user found")
     const baseUrl = new URL(request.url).origin
     return NextResponse.redirect(`${baseUrl}/login`)
   }
@@ -28,7 +27,6 @@ export async function GET(request: Request) {
         picture: user.user_metadata.avatar_url ?? "",
       },
     })
-    console.log("User created!", dbUser)
   }
 
   const baseUrl = new URL(request.url).origin

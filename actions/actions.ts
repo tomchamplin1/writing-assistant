@@ -12,7 +12,6 @@ export async function createStory(formData: FormData) {
   } = await (await supabase).auth.getUser()
 
   if (!user) {
-    console.log("You have to login to save stories")
     return { loading: false, success: false, error: "User not logged in" }
   }
 
@@ -24,7 +23,6 @@ export async function createStory(formData: FormData) {
     })
 
     if (!dbUser) {
-      console.error("User not found in the database. Unable to save the story.")
       return {
         loading: false,
         success: false,
@@ -45,5 +43,44 @@ export async function createStory(formData: FormData) {
   } catch (error) {
     console.error("Error creating story:", error)
     return { loading: false, success: false, error: "Error creating story" }
+  }
+}
+
+export async function deleteStory(storyId: string) {
+  const supabase = createClient()
+
+  const {
+    data: { user },
+  } = await (await supabase).auth.getUser()
+
+  if (!user) {
+    return { loading: false, success: false, error: "User not logged in" }
+  }
+
+  try {
+    let dbUser = await prisma.users.findUnique({
+      where: { id: user.id },
+    })
+
+    if (!dbUser) {
+      return {
+        loading: false,
+        success: false,
+        error: "User not found in the database",
+      }
+    }
+
+    const deletedStory = await prisma.story.delete({
+      where: {
+        id: storyId,
+        userId: user.id,
+      },
+    })
+
+    console.log("Story deleted successfully:", deletedStory.id)
+    return { loading: false, success: true, error: null }
+  } catch (error) {
+    console.error("Error deleting story:", error)
+    return { loading: false, success: false, error: "Error deleting story" }
   }
 }

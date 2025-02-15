@@ -1,90 +1,48 @@
-"use client"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 
-import { useState } from "react"
-import { createStory } from "@/actions/actions"
-import { createClient } from "@/utils/supabase/client"
-
-import prisma from "@/lib/db"
-import { useToast } from "@/hooks/use-toast"
 import { Button } from "@/components/ui/button"
-import GenerateButton from "@/components/Generate"
-import TextBox from "@/components/Textbox"
-import Timer from "@/components/Timer"
 
 export default function IndexPage() {
-  const { toast } = useToast()
-  const [topics, setTopics] = useState("")
-  const [storyContent, setStoryContent] = useState("")
-  const [prompt, setPrompt] = useState("")
-  const [loading, setLoading] = useState(false)
-
-  const handleDataGenerated = (data) => {
-    setPrompt(data.content[0].text)
-    console.log("Data received from GenerateButton:", prompt)
-  }
-
-  const saveStory = async () => {
-    setLoading(true)
-    const formData = new FormData()
-    formData.append("story", storyContent)
-    formData.append("prompt", prompt)
-
-    const result = await createStory(formData)
-
-    setLoading(false)
-    return result
-  }
-
-  const handleSave = async () => {
-    const result = await saveStory()
-
-    if (result?.success) {
-      toast({
-        title: "Story Saved",
-        description: "Your story was successfully created.",
-      })
-    } else {
-      toast({
-        title: "Error",
-        description: "Failed to save the story. Please try again.",
-        variant: "destructive",
-      })
-    }
-  }
-
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="flex max-w-[980px] flex-col items-start gap-2">
-        <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-          Generate a writing prompt in seconds
+    <section className="container flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-background to-secondary/20 px-4 py-16">
+      <div className="max-w-3xl space-y-6 text-center">
+        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+          Unlock Your Imagination with{" "}
+          <span className="text-primary">AI-Powered Writing Prompts 🖊️</span>{" "}
         </h1>
-        <GenerateButton onDataGenerated={handleDataGenerated} />
-        <Timer />
-        <div className="flex min-h-screen w-full flex-col">
-          <form onSubmit={saveStory}>
-            <div>
-              <textarea
-                className="w-full grow resize-none rounded-md border p-4 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter your text here..."
-                aria-label="Large text input"
-                name="story"
-                rows={20}
-                value={storyContent}
-                onChange={(e) => setStoryContent(e.target.value)}
-              />
-            </div>
-            <input type="hidden" name="prompt" value={prompt} />
-            <Button
-              type="button"
-              onClick={handleSave} // Use the client-side function instead
-              disabled={!prompt || !storyContent || loading}
-            >
-              {loading ? "Saving..." : "Submit"}
+        <p className="text-xl text-muted-foreground md:text-2xl">
+          Instantly generate unique prompts to spark your next story
+        </p>
+        <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <Link href="/write">
+            <Button size="lg" className="w-full sm:w-auto">
+              Get started <ArrowRight className="ml-2 size-4" />
             </Button>
-          </form>
+          </Link>
+          {/* <Link href="/about">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto">
+              Learn more
+            </Button>
+          </Link> */}
         </div>
       </div>
-      <div className="flex gap-4"></div>
     </section>
   )
 }
+
+const features = [
+  {
+    title: "AI-Powered Prompts",
+    description:
+      "Generate unique writing prompts tailored to your preferences.",
+  },
+  {
+    title: "Boost Creativity",
+    description: "Overcome writer's block and explore new story ideas.",
+  },
+  {
+    title: "Easy to Use",
+    description: "Simple interface for seamless prompt generation and writing.",
+  },
+]

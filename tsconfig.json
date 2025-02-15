@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,9 +15,7 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     },
     "plugins": [
       {
@@ -42,9 +36,9 @@
     "app/page.jsx",
     "app/page.jsx",
     "components/Generate.jsx",
-    "components/Generate.jx"
-, "app/login/page.jsx"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "components/Generate.jx",
+    "app/login/page.jsx",
+    "app/story/[storyID]/page.jsx"
+  ],
+  "exclude": ["node_modules"]
 }

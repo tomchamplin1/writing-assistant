@@ -26,7 +26,7 @@ export default async function Account() {
   return (
     <div className="min-h-screen px-4 py-12 text-white sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <h1 className="mb-12 text-center text-4xl font-bold">My Stories</h1>
+        <h1 className="mb-12 text-center text-4xl font-bold">Stories</h1>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {stories.map((story, index) => (
             <div
@@ -34,17 +34,14 @@ export default async function Account() {
               className="overflow-hidden rounded-lg bg-gray-800 shadow-lg transition-all duration-300"
             >
               <div className="p-6">
-                <span className="mb-5 text-sm text-gray-400">
-                  {new Date(story.updatedAt).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}{" "}
-                  at{" "}
-                  {new Date(story.updatedAt).toLocaleTimeString("en-US", {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })}
+                <span className="pb-5 text-sm text-gray-400">
+                  <p className="mb-3">
+                    {new Date(story.updatedAt).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </p>
                 </span>
                 <h3 className="text-md mb-3 font-semibold text-gray-100">
                   {story.prompt}

@@ -3,6 +3,8 @@ import { redirect } from "next/navigation"
 import { createClient } from "@/utils/supabase/server"
 
 import prisma from "@/lib/db"
+import { Button } from "@/components/ui/button"
+import DeleteButton from "@/components/DeleteButton"
 
 export default async function Story({ params }) {
   const storyID = params?.storyID
@@ -29,13 +31,31 @@ export default async function Story({ params }) {
   return (
     <div className="min-h-screen px-4 py-12 text-white sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="overflow-hidden rounded-lg bg-gray-800 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+        <Link href="/account">
+          <Button
+            variant="ghost"
+            className="mb-4 text-gray-400 transition-colors duration-200 hover:text-white"
+          >
+            &lt;- Back
+          </Button>
+        </Link>
+        <div className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-2xl">
           <div className="p-6">
-            <h3 className="text-md mb-3 font-semibold text-gray-100">
+            <p className="mb-3">
+              {new Date(story.updatedAt).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </p>
+            <h3 className="mb-3 text-lg font-semibold text-gray-100">
               {story.prompt}
             </h3>
-            <p className="text-gray-300">{story.content}</p>
+            <p className="whitespace-pre-wrap text-gray-300">{story.content}</p>
           </div>
+        </div>
+        <div className="mt-4">
+          <DeleteButton storyID={storyID} />
         </div>
       </div>
     </div>
