@@ -21,7 +21,7 @@ export default function AuthButtonClient() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "https://www.penpalai.xyz/auth/confirm",
+        redirectTo: getURL(),
       },
     })
   }
