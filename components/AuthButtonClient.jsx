@@ -9,16 +9,13 @@ export default function AuthButtonClient() {
   const supabase = createClient()
   const router = useRouter()
 
-  // const getURL = () => {
-  //   let url =
-  //     process?.env?.NEXT_PUBLIC_SITE_URL ??
-  //     process?.env?.NEXT_PUBLIC_VERCEL_URL ??
-  //     "http://localhost:3000/"
-  //   url = url.startsWith("http") ? url : `https://${url}`
-  //   url = url.endsWith("/") ? url : `${url}/`
-  //   url = `${url}auth/confirm`
-  //   return url
-  // }
+  const getURL = () => {
+    if (process.env.NODE_ENV === "development") {
+      return "http://localhost:3000/auth/confirm"
+    } else {
+      return "https://www.penpalai.xyz/auth/confirm"
+    }
+  }
 
   const handleSignIn = async () => {
     await supabase.auth.signInWithOAuth({
@@ -34,7 +31,7 @@ export default function AuthButtonClient() {
       onClick={handleSignIn}
       variant="ghost"
       size="sm"
-      className="text-md hidden border border-gray-500 px-4 py-5 text-gray-700 lg:flex"
+      className="text-md hidden border border-gray-500 px-4 py-5 lg:flex bg-background"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
