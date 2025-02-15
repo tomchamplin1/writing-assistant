@@ -9,23 +9,22 @@ export default function AuthButtonClient() {
   const supabase = createClient()
   const router = useRouter()
 
-  const getURL = () => {
-    let url =
-      process?.env?.NEXT_PUBLIC_SITE_URL ??
-      process?.env?.NEXT_PUBLIC_VERCEL_URL ??
-      "http://localhost:3000/"
-    url = url.startsWith("http") ? url : `https://${url}`
-    url = url.endsWith("/") ? url : `${url}/`
-    url = `${url}auth/confirm`
-    console.error(url)
-    return url
-  }
+  // const getURL = () => {
+  //   let url =
+  //     process?.env?.NEXT_PUBLIC_SITE_URL ??
+  //     process?.env?.NEXT_PUBLIC_VERCEL_URL ??
+  //     "http://localhost:3000/"
+  //   url = url.startsWith("http") ? url : `https://${url}`
+  //   url = url.endsWith("/") ? url : `${url}/`
+  //   url = `${url}auth/confirm`
+  //   return url
+  // }
 
   const handleSignIn = async () => {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: getURL(),
+        redirectTo: "https://www.penpalai.xyz/auth/confirm",
       },
     })
   }
