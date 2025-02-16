@@ -1,9 +1,8 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "PromptAssist",
-  description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+  name: "PenpalAI",
+  description: "Unlock Your Imagination with AI-Powered Writing Prompts.",
   mainNav: [
     {
       title: "Home",
@@ -18,9 +17,9 @@ export const siteConfig = {
     //   href: "/logout",
     // },
   ],
-  links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
-    docs: "https://ui.shadcn.com",
-  },
+  // links: {
+  //   twitter: "https://twitter.com/shadcn",
+  //   github: "https://github.com/shadcn/ui",
+  //   docs: "https://ui.shadcn.com",
+  // },
 }
