@@ -26,7 +26,7 @@ export default async function Stories() {
   return (
     <div className="container min-h-screen py-12">
       <div className="mx-auto">
-        <h1 className="mb-12 text-center text-4xl font-bold">Stories</h1>
+        <h1 className="mb-12 text-center text-4xl font-bold">My Stories</h1>
         {stories.length > 0 ? (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {stories.map((story, index) => (

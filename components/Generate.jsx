@@ -44,7 +44,7 @@ export default function GenerateButton({ onDataGenerated }) {
       >
         {isLoading ? "Generating..." : "Generate a prompt"}
       </Button>
-      <div className="mt-5 mb-2">{data && <p>{data.content[0].text} </p>}</div>
+      <div className="mb-2 mt-5">{data && <p>{data.content[0].text} </p>}</div>
     </div>
   )
 }
