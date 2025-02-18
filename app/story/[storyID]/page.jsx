@@ -29,33 +29,36 @@ export default async function Story({ params }) {
   }
 
   return (
-    <div className="min-h-screen px-4 py-12 text-white sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <Link href="/account">
-          <Button
-            variant="ghost"
-            className="mb-4 text-gray-400 transition-colors duration-200 hover:text-white"
-          >
-            &lt;- Back
-          </Button>
-        </Link>
-        <div className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-2xl">
-          <div className="p-6">
-            <p className="mb-3">
+    <div className="container min-h-screen py-12">
+      <div className="mx-auto">
+        <div className="flex justify-between">
+          <div>
+            <Link href="/stories">
+              <Button
+                variant="outline"
+                className="mb-4 text-gray-400 transition-colors duration-200 hover:text-white"
+              >
+                &lt;- Back
+              </Button>
+            </Link>
+          </div>
+          <div className="">
+            <DeleteButton storyID={storyID} />
+          </div>
+        </div>
+        <div className="overflow-hidden ">
+          <div className="">
+            <p className="mb-3 text-sm ">
               {new Date(story.updatedAt).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
               })}
             </p>
-            <h3 className="mb-3 text-lg font-semibold text-gray-100">
-              {story.prompt}
-            </h3>
-            <p className="whitespace-pre-wrap text-gray-300">{story.content}</p>
+            <h3 className="mb-3 text-lg font-semibold ">{story.prompt}</h3>
+            <hr className="mb-3"></hr>
+            <p className="whitespace-pre-wrap ">{story.content}</p>
           </div>
-        </div>
-        <div className="mt-4">
-          <DeleteButton storyID={storyID} />
         </div>
       </div>
     </div>

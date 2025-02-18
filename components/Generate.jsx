@@ -38,13 +38,13 @@ export default function GenerateButton({ onDataGenerated }) {
       <Button
         variant="default"
         size="lg"
-        className="my-4"
+        className=""
         onClick={handleClick}
         disabled={isLoading}
       >
-        {isLoading ? "Generating..." : "Generate"}
+        {isLoading ? "Generating..." : "Generate a prompt"}
       </Button>
-      <div className="mb-2">{data && <p>{data.content[0].text} </p>}</div>
+      <div className="mt-5 mb-2">{data && <p>{data.content[0].text} </p>}</div>
     </div>
   )
 }

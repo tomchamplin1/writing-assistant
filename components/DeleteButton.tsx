@@ -17,7 +17,7 @@ export default function DeleteButton({ storyID }: { storyID: string }) {
     const response = await deleteStory(storyID)
 
     if (response.success) {
-      router.push("/account") // Redirect on success
+      router.push("/stories")
     } else {
       alert("Failed to delete story: " + response.error)
     }
@@ -26,12 +26,12 @@ export default function DeleteButton({ storyID }: { storyID: string }) {
 
   return (
     <Button
-      variant="outline"
-      className="text-gray-400 transition-colors duration-200 hover:text-white"
+      variant="destructive"
+      className=" "
       onClick={handleDelete}
       disabled={loading}
     >
-      {loading ? "Deleting..." : "Delete Story"}
+      {loading ? "Deleting..." : "Delete story"}
     </Button>
   )
 }

@@ -6,11 +6,11 @@ export default function Footer() {
   return (
     <div>
       <hr></hr>
-      <footer id="contact" className="bg-background px-2.5 py-5 md:px-40">
+      <footer id="contact" className="container bg-background py-5">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <Link href="/" className="mb-5 flex items-center">
-              <p className="my-auto text-sm lg:text-lg">PenpalAI</p>
+              <p className="my-auto text-xl">PenpalAI</p>
             </Link>
             <p className="max-w-xs text-sm ">
               Instantly generate unique prompts to spark your next story
@@ -33,8 +33,8 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li className="mb-4 hover:text-zinc-200">
-                  <Link href="/account" className="hover:underline">
-                    ACCOUNT
+                  <Link href="/stories" className="hover:underline">
+                    STORIES
                   </Link>
                 </li>
                 {/* <li className="mb-4">

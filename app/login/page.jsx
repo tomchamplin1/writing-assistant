@@ -29,7 +29,7 @@ export default async function Login({ searchParams }) {
       return redirect("/login?message=Could not authenticate user")
     }
 
-    return redirect("/account")
+    return redirect("/stories")
   }
 
   const signUp = async (formData) => {
