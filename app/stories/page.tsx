@@ -24,7 +24,7 @@ export default async function Stories() {
   })
 
   return (
-    <div className="container min-h-screen py-12">
+    <div className="container min-h-screen py-12 border-l border-r">
       <div className="mx-auto">
         <h1 className="mb-12 text-center text-4xl font-bold">My Stories</h1>
         {stories.length > 0 ? (
@@ -32,7 +32,7 @@ export default async function Stories() {
             {stories.map((story, index) => (
               <div
                 key={index}
-                className="flex flex-col overflow-hidden rounded-lg bg-zinc-900 shadow-lg transition-all duration-300"
+                className="flex flex-col overflow-hidden rounded-none bg-zinc-900 shadow-lg transition-all duration-300"
                 style={{ minHeight: "300px" }}
               >
                 <div className="grow p-6">

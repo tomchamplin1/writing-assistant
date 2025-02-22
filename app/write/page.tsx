@@ -74,7 +74,7 @@ export default function IndexPage() {
   }
 
   return (
-    <section className="container grid min-h-screen items-center gap-6 pb-8 pt-6  md:py-10">
+    <section className="container grid min-h-screen items-center gap-6 border-x pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-2">
         {/* <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
           Generate a writing prompt in seconds
@@ -85,7 +85,7 @@ export default function IndexPage() {
           <form onSubmit={saveStory}>
             <div>
               <textarea
-                className="w-full grow resize-none rounded-md border p-4 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full grow resize-none rounded-none border p-4 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter your text here..."
                 aria-label="Large text input"
                 name="story"
@@ -99,6 +99,7 @@ export default function IndexPage() {
               type="button"
               onClick={handleSave}
               disabled={!prompt || !storyContent || loading}
+              className="rounded-none"
             >
               {loading ? "Saving..." : "Submit"}
             </Button>

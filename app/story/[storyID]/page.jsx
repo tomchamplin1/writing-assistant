@@ -29,7 +29,7 @@ export default async function Story({ params }) {
   }
 
   return (
-    <div className="container min-h-screen py-12">
+    <div className="container min-h-screen py-12 border-l border-r">
       <div className="mx-auto">
         <div className="flex justify-between">
           <div>

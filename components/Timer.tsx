@@ -62,9 +62,9 @@ const Timer: React.FC = () => {
   }
 
   return (
-    <Card className="w-full max-w-3xl">
+    <Card className="w-full max-w-3xl rounded-none">
       <CardContent className="p-2">
-        <div className="flex items-center justify-between">
+        <div className="md:flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <h2 className="text-lg font-semibold dark:text-gray-200">Timer</h2>
             <div
@@ -74,7 +74,10 @@ const Timer: React.FC = () => {
               {formatTime(time)}
             </div>
           </div>
-          <form onSubmit={handleSubmit} className="flex items-center space-x-2">
+          <form
+            onSubmit={handleSubmit}
+            className="flex items-center md:py-0 py-2 md:space-x-2"
+          >
             <Label htmlFor="minutes" className="sr-only">
               Set timer (minutes)
             </Label>
@@ -85,9 +88,9 @@ const Timer: React.FC = () => {
               value={inputTime}
               onChange={(e) => setInputTime(e.target.value)}
               min="1"
-              className="w-full text-sm"
+              className="max-w-28 rounded-none text-sm"
             />
-            <Button type="submit" size="sm">
+            <Button type="submit" size="sm" className="rounded-none">
               Set
             </Button>
           </form>
@@ -96,13 +99,24 @@ const Timer: React.FC = () => {
               onClick={handleStart}
               disabled={isActive || time === 0}
               size="sm"
+              className="rounded-none"
             >
               Start
             </Button>
-            <Button onClick={handlePause} disabled={!isActive} size="sm">
+            <Button
+              onClick={handlePause}
+              disabled={!isActive}
+              size="sm"
+              className="rounded-none"
+            >
               Pause
             </Button>
-            <Button onClick={handleReset} variant="outline" size="sm">
+            <Button
+              onClick={handleReset}
+              variant="outline"
+              size="sm"
+              className="rounded-none"
+            >
               Reset
             </Button>
           </div>

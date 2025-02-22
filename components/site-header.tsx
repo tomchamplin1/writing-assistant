@@ -14,49 +14,57 @@ export async function SiteHeader() {
   } = await (await supabase).auth.getUser()
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background">
-      <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+    <header className="sticky top-0 z-40 size-full border-b bg-background">
+      <div className="container flex h-full items-center space-x-4 border-x sm:justify-between sm:space-x-0">
         <Link href="/" className="flex items-center space-x-2">
           <span className="inline-block font-bold">PenpalAI</span>
         </Link>
-        <div className="flex space-x-4 pl-5">
+        <div className="flex pl-5 h-full">
           <Link
             href="/"
             className={cn(
-              "flex items-center text-sm font-medium text-muted-foreground"
+              "flex items-center text-sm font-medium text-muted-foreground h-full"
             )}
           >
-            <Button variant={"ghost"}>Home</Button>
+            <Button variant={"ghost"} className="rounded-none p-5 h-full">
+              Home
+            </Button>
           </Link>
           {!user ? (
             <Link
               href="/login"
               className={cn(
-                "flex items-center text-sm font-medium text-muted-foreground"
+                "flex items-center text-sm font-medium text-muted-foreground h-full"
               )}
             >
-              <Button variant={"ghost"}>Stories</Button>
+              <Button variant={"ghost"} className="rounded-none p-5 h-full">
+                Stories
+              </Button>
             </Link>
           ) : (
-            <div className="flex space-x-4">
-              <div className="flex space-x-4">
+            <div className="flex h-full">
+              <div className="flex h-full">
                 <Link
                   href="/write"
                   className={cn(
-                    "flex items-center text-sm font-medium text-muted-foreground"
+                    "flex items-center text-sm font-medium text-muted-foreground h-full"
                   )}
                 >
-                  <Button variant={"ghost"}>Write</Button>
+                  <Button variant={"ghost"} className="rounded-none p-5 h-full">
+                    Write
+                  </Button>
                 </Link>
               </div>
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 h-full">
                 <Link
                   href="/stories"
                   className={cn(
-                    "flex items-center text-sm font-medium text-muted-foreground"
+                    "flex items-center text-sm font-medium text-muted-foreground h-full"
                   )}
                 >
-                  <Button variant={"ghost"}>Stories</Button>
+                  <Button variant={"ghost"} className="rounded-none p-5 h-full">
+                    Stories
+                  </Button>
                 </Link>
               </div>
             </div>
@@ -64,8 +72,8 @@ export async function SiteHeader() {
         </div>
 
         {/* <MainNav items={siteConfig.mainNav} /> */}
-        <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="flex items-center space-x-4">
+        <div className="flex flex-1 items-center justify-end h-full">
+          <nav className="flex items-center h-full">
             {/* <Link
               href={siteConfig.links.github}
               target="_blank"
@@ -97,21 +105,21 @@ export async function SiteHeader() {
               </div>
             </Link> */}
             {!user ? (
-              <Button
-                variant={"ghost"}
+              <Link
+                href="/login"
                 className={cn(
-                  "flex items-center text-sm font-medium text-muted-foreground"
+                  "flex items-center text-sm font-medium text-muted-foreground h-full"
                 )}
               >
-                <Link href="/login">Login</Link>
-              </Button>
+                <Button variant={"ghost"} className="rounded-none p-5 h-full">
+                  Login
+                </Button>
+              </Link>
             ) : (
-              <div className="flex space-x-4">
+              <div className="flex">
                 <Button
                   variant={"ghost"}
-                  className={cn(
-                    "flex items-center text-sm font-medium text-muted-foreground"
-                  )}
+                  className="rounded-none p-5 h-full"
                   onClick={logout}
                 >
                   Logout

@@ -38,7 +38,7 @@ export default function GenerateButton({ onDataGenerated }) {
       <Button
         variant="default"
         size="lg"
-        className=""
+        className="rounded-none"
         onClick={handleClick}
         disabled={isLoading}
       >

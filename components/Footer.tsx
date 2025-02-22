@@ -6,7 +6,10 @@ export default function Footer() {
   return (
     <div>
       <hr></hr>
-      <footer id="contact" className="container bg-background py-5">
+      <footer
+        id="contact"
+        className="container border-l border-r bg-background py-5"
+      >
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <Link href="/" className="mb-5 flex items-center">

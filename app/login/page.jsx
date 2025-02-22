@@ -72,7 +72,7 @@ export default async function Login({ searchParams }) {
   }
 
   return (
-    <div className="flex h-screen items-center">
+    <div className="flex h-screen items-center border-l border-r container">
       <div className="mx-auto flex w-full flex-1 flex-col justify-center gap-2 px-8 sm:max-w-md">
         <Link href="/" className="">
           <button className="bg-btn-background hover:bg-btn-background-hover items-left mt-2 flex rounded-md py-2 pr-2 text-sm text-foreground no-underline">
