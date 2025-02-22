@@ -1,11 +1,19 @@
 import * as React from "react"
 import Link from "next/link"
 import { createClient } from "@/utils/supabase/server"
+import { Menu } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import logout from "@/app/logout/page"
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu"
 
 export async function SiteHeader() {
   const supabase = createClient()
@@ -19,7 +27,7 @@ export async function SiteHeader() {
         <Link href="/" className="flex items-center space-x-2">
           <span className="inline-block font-bold">PenpalAI</span>
         </Link>
-        <div className="flex h-full pl-5">
+        <div className=" h-full pl-5 hidden md:flex">
           <Link
             href="/"
             className={cn(
@@ -28,7 +36,7 @@ export async function SiteHeader() {
           >
             <Button
               variant={"ghost"}
-              className="h-full rounded-none py-5 px-2 md:p-5"
+              className="h-full rounded-none px-2 py-5 md:p-5"
             >
               Home
             </Button>
@@ -42,7 +50,7 @@ export async function SiteHeader() {
             >
               <Button
                 variant={"ghost"}
-                className="h-full rounded-none py-5 px-2 md:p-5"
+                className="h-full rounded-none px-2 py-5 md:p-5"
               >
                 Stories
               </Button>
@@ -58,7 +66,7 @@ export async function SiteHeader() {
                 >
                   <Button
                     variant={"ghost"}
-                    className="h-full rounded-none py-5 px-2 md:p-5"
+                    className="h-full rounded-none px-2 py-5 md:p-5"
                   >
                     Write
                   </Button>
@@ -73,7 +81,7 @@ export async function SiteHeader() {
                 >
                   <Button
                     variant={"ghost"}
-                    className="h-full rounded-none py-5 px-2 md:p-5"
+                    className="h-full rounded-none px-2 py-5 md:p-5"
                   >
                     Stories
                   </Button>
@@ -82,10 +90,8 @@ export async function SiteHeader() {
             </div>
           )}
         </div>
-
-        {/* <MainNav items={siteConfig.mainNav} /> */}
         <div className="flex h-full flex-1 items-center justify-end">
-          <nav className="flex h-full items-center">
+          <nav className="h-full items-center hidden md:flex">
             {/* <Link
               href={siteConfig.links.github}
               target="_blank"
@@ -125,7 +131,7 @@ export async function SiteHeader() {
               >
                 <Button
                   variant={"ghost"}
-                  className="h-full rounded-none py-5 px-2 md:p-5"
+                  className="h-full rounded-none px-2 py-5 md:p-5"
                 >
                   Login
                 </Button>
@@ -134,7 +140,7 @@ export async function SiteHeader() {
               <div className="flex">
                 <Button
                   variant={"ghost"}
-                  className="h-full rounded-none py-5 px-2 md:p-5"
+                  className="h-full rounded-none px-2 py-5 md:p-5"
                   onClick={logout}
                 >
                   Logout
@@ -143,6 +149,59 @@ export async function SiteHeader() {
             )}
             <ThemeToggle />
           </nav>
+        </div>
+        <div className="flex md:hidden h-full">
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost">
+                  <Menu />
+                </Button>
+              </DropdownMenuTrigger>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <Link
+                href="/"
+                className={cn("text-sm font-medium text-muted-foreground")}
+              >
+                <DropdownMenuItem>Home</DropdownMenuItem>
+              </Link>
+              {!user ? (
+                <Link
+                  href="/login"
+                  className={cn("text-sm font-medium text-muted-foreground")}
+                >
+                  <DropdownMenuItem>Stories</DropdownMenuItem>
+                </Link>
+              ) : (
+                <div>
+                  <Link
+                    href="/write"
+                    className={cn("text-sm font-medium text-muted-foreground")}
+                  >
+                    <DropdownMenuItem>Write</DropdownMenuItem>
+                  </Link>
+                  <Link
+                    href="/stories"
+                    className={cn("text-sm font-medium text-muted-foreground")}
+                  >
+                    <DropdownMenuItem>Stories</DropdownMenuItem>
+                  </Link>
+                </div>
+              )}
+              {!user ? (
+                <Link
+                  href="/login"
+                  className={cn("text-sm font-medium text-muted-foreground")}
+                >
+                  <DropdownMenuItem>Login</DropdownMenuItem>
+                </Link>
+              ) : (
+                <DropdownMenuItem onClick={logout}>Logout</DropdownMenuItem>
+              )}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <ThemeToggle />
         </div>
       </div>
     </header>
