@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export default function IndexPage() {
   return (
-    <section className="container flex min-h-screen flex-col items-center justify-center border bg-gradient-to-b from-background to-secondary/20 px-4 py-16">
+    <section className="container flex min-h-screen flex-col items-center justify-center border-l border-r bg-gradient-to-b from-background to-secondary/20 px-4 py-16">
       <div className="max-w-3xl space-y-6 text-center">
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
           Unlock Your Imagination with{" "}

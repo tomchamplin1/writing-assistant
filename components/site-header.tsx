@@ -150,7 +150,7 @@ export async function SiteHeader() {
             <ThemeToggle />
           </nav>
         </div>
-        <div className="flex md:hidden h-full">
+        <div className="flex md:hidden h-full p-2.5">
           <DropdownMenu>
             <DropdownMenuTrigger>
               <DropdownMenuTrigger asChild>
