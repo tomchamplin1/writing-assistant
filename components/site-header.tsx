@@ -19,14 +19,17 @@ export async function SiteHeader() {
         <Link href="/" className="flex items-center space-x-2">
           <span className="inline-block font-bold">PenpalAI</span>
         </Link>
-        <div className="flex pl-5 h-full">
+        <div className="flex h-full pl-5">
           <Link
             href="/"
             className={cn(
-              "flex items-center text-sm font-medium text-muted-foreground h-full"
+              "flex h-full items-center text-sm font-medium text-muted-foreground"
             )}
           >
-            <Button variant={"ghost"} className="rounded-none p-5 h-full">
+            <Button
+              variant={"ghost"}
+              className="h-full rounded-none py-5 px-2 md:p-5"
+            >
               Home
             </Button>
           </Link>
@@ -34,10 +37,13 @@ export async function SiteHeader() {
             <Link
               href="/login"
               className={cn(
-                "flex items-center text-sm font-medium text-muted-foreground h-full"
+                "flex h-full items-center text-sm font-medium text-muted-foreground"
               )}
             >
-              <Button variant={"ghost"} className="rounded-none p-5 h-full">
+              <Button
+                variant={"ghost"}
+                className="h-full rounded-none py-5 px-2 md:p-5"
+              >
                 Stories
               </Button>
             </Link>
@@ -47,22 +53,28 @@ export async function SiteHeader() {
                 <Link
                   href="/write"
                   className={cn(
-                    "flex items-center text-sm font-medium text-muted-foreground h-full"
+                    "flex h-full items-center text-sm font-medium text-muted-foreground"
                   )}
                 >
-                  <Button variant={"ghost"} className="rounded-none p-5 h-full">
+                  <Button
+                    variant={"ghost"}
+                    className="h-full rounded-none py-5 px-2 md:p-5"
+                  >
                     Write
                   </Button>
                 </Link>
               </div>
-              <div className="flex space-x-4 h-full">
+              <div className="flex h-full space-x-4">
                 <Link
                   href="/stories"
                   className={cn(
-                    "flex items-center text-sm font-medium text-muted-foreground h-full"
+                    "flex h-full items-center text-sm font-medium text-muted-foreground"
                   )}
                 >
-                  <Button variant={"ghost"} className="rounded-none p-5 h-full">
+                  <Button
+                    variant={"ghost"}
+                    className="h-full rounded-none py-5 px-2 md:p-5"
+                  >
                     Stories
                   </Button>
                 </Link>
@@ -72,8 +84,8 @@ export async function SiteHeader() {
         </div>
 
         {/* <MainNav items={siteConfig.mainNav} /> */}
-        <div className="flex flex-1 items-center justify-end h-full">
-          <nav className="flex items-center h-full">
+        <div className="flex h-full flex-1 items-center justify-end">
+          <nav className="flex h-full items-center">
             {/* <Link
               href={siteConfig.links.github}
               target="_blank"
@@ -108,10 +120,13 @@ export async function SiteHeader() {
               <Link
                 href="/login"
                 className={cn(
-                  "flex items-center text-sm font-medium text-muted-foreground h-full"
+                  "flex h-full items-center text-sm font-medium text-muted-foreground"
                 )}
               >
-                <Button variant={"ghost"} className="rounded-none p-5 h-full">
+                <Button
+                  variant={"ghost"}
+                  className="h-full rounded-none py-5 px-2 md:p-5"
+                >
                   Login
                 </Button>
               </Link>
@@ -119,7 +134,7 @@ export async function SiteHeader() {
               <div className="flex">
                 <Button
                   variant={"ghost"}
-                  className="rounded-none p-5 h-full"
+                  className="h-full rounded-none py-5 px-2 md:p-5"
                   onClick={logout}
                 >
                   Logout

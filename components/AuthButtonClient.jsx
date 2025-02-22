@@ -31,7 +31,7 @@ export default function AuthButtonClient() {
       onClick={handleSignIn}
       variant="ghost"
       size="sm"
-      className="text-md hidden border border-gray-500 px-4 py-5 lg:flex bg-background"
+      className="text-md border border-gray-500 bg-background px-4 py-5 lg:flex"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
